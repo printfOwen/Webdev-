@@ -1,0 +1,72 @@
+:root{--brown:#3a2618;--brown2:#5b3d28;--green:#1e3a2a;--green2:#2f5b40;--red:#a3272b;--gold:#c9a227;--amber:#f0a830;--cream:#f9f1e1;--sand:#f0e2c4;--ink:#2a1d14}
+html{scroll-behavior:smooth}section,header{scroll-margin-top:72px}
+body{font-family:Nunito,system-ui,sans-serif;color:var(--ink);background:var(--cream)}
+h1,h2,h3,h4,h5,.brand-title{font-family:"Shippori Mincho",Georgia,serif}
+
+/* ===== header ===== */
+.site-nav{background:var(--brown);border-bottom:3px solid var(--gold);transition:box-shadow .3s}
+.site-nav.scrolled{box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.logo{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--gold);color:var(--brown);font:700 19px "Shippori Mincho",serif}
+.site-nav .navbar-brand{color:var(--gold);font-weight:700;letter-spacing:.03em}
+.site-nav .nav-link{color:var(--cream);font-weight:600;padding:.4rem .9rem!important}
+.site-nav .nav-link:hover{color:var(--amber)}
+.navbar-toggler{border-color:var(--gold)}.navbar-toggler-icon{filter:invert(1) sepia(1) saturate(3)}
+
+/* ===== buttons ===== */
+.btn{border-radius:.5rem;font-weight:700;transition:.2s}.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:var(--gold);border-color:var(--gold);color:var(--brown)}
+.btn-gold:hover{background:var(--amber);border-color:var(--amber);color:var(--brown)}
+
+/* ===== image frames (add real files to replace the placeholders) ===== */
+.ph{position:relative;display:grid;place-items:center;text-align:center;overflow:hidden;border-radius:.75rem;background:var(--green2);color:var(--gold);font-weight:600;border:1px solid rgba(58,38,24,.2)}
+.ph::after{content:attr(data-label);padding:1rem}.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+
+/* ===== hero ===== */
+.hero{position:relative;overflow:hidden;color:#fff;padding:4.5rem 0 15rem;background:linear-gradient(180deg,#2f6db5 0%,#4f9be0 42%,#a9d8f3 78%,#e8f5fc 100%)}
+.hero::before{content:"";position:absolute;inset:0;animation:clouds 70s ease-in-out infinite alternate;
+background:radial-gradient(ellipse 220px 55px at 12% 22%,rgba(255,255,255,.55),transparent 72%),radial-gradient(ellipse 300px 70px at 38% 12%,rgba(255,255,255,.5),transparent 72%),radial-gradient(ellipse 260px 60px at 70% 30%,rgba(255,255,255,.9),transparent 72%),radial-gradient(ellipse 340px 80px at 92% 14%,rgba(255,255,255,.85),transparent 72%),radial-gradient(ellipse 280px 60px at 25% 52%,rgba(255,255,255,.5),transparent 72%);background-size:130% 100%}
+@keyframes clouds{to{background-position:30% 0}}
+.hero .container{position:relative;z-index:2}
+.hero h1{font-size:clamp(2.4rem,6vw,4rem);color:#fff4c7;text-shadow:0 3px 0 rgba(163,39,43,.9),0 6px 18px rgba(0,30,80,.4)}
+.hero .jp{color:#ffd36b;letter-spacing:.3em;margin-bottom:.25rem;text-shadow:0 1px 6px rgba(0,30,80,.5)}
+.hero .lead{text-shadow:0 1px 8px rgba(0,40,90,.55)}
+.poster{aspect-ratio:2/3;max-width:300px;margin:auto;box-shadow:0 12px 30px rgba(0,30,80,.45)}
+.badge-pill{display:inline-block;background:rgba(255,255,255,.18);border:1px solid #ffd36b;border-radius:2rem;padding:.15rem .8rem;font-size:.85rem}
+.scene{position:absolute;left:0;bottom:-1px;width:100%;height:240px;z-index:1}
+
+/* ===== sections ===== */
+.sec{padding:4.5rem 0;background:radial-gradient(ellipse 380px 80px at 10% 6%,rgba(255,255,255,.95),transparent 70%),radial-gradient(ellipse 320px 70px at 90% 3%,rgba(255,255,255,.85),transparent 70%),linear-gradient(180deg,#d4eaf8 0%,var(--cream) 62%)}
+.sec-sand{background:radial-gradient(circle at 90% 0%,rgba(255,255,255,.5),transparent 40%),linear-gradient(180deg,#f6dfb4,#eec489)}
+.sec-green{color:var(--cream);background:radial-gradient(circle at 88% 8%,rgba(240,168,48,.2),transparent 38%),radial-gradient(circle at 8% 100%,rgba(79,155,224,.14),transparent 40%),linear-gradient(180deg,#244a33,#142a1c)}
+.sec-brown{color:var(--cream);background:radial-gradient(circle at 12% 0%,rgba(240,168,48,.3),transparent 42%),radial-gradient(circle at 92% 100%,rgba(240,168,48,.18),transparent 40%),linear-gradient(180deg,#8e2326,#3d1a14)}
+.eyebrow{color:var(--red);text-transform:uppercase;letter-spacing:.2em;font-size:.78rem;font-weight:800;margin-bottom:.3rem}
+.sec-green .eyebrow,.sec-brown .eyebrow{color:var(--amber)}
+.sec h2{position:relative;padding-bottom:.7rem;margin-bottom:1.8rem}
+.sec h2::after{content:"";position:absolute;left:0;bottom:0;width:60px;height:3px;background:var(--gold)}
+.card{border:1px solid rgba(58,38,24,.12);border-top:4px solid var(--gold);border-radius:.75rem;box-shadow:0 2px 8px rgba(58,38,24,.08);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 18px rgba(58,38,24,.15)}
+.icon-dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:var(--gold);font-size:1.25rem}
+.facts dt{color:var(--red);font-weight:700}.facts dd{margin-bottom:.6rem}
+.table-earth{--bs-table-bg:transparent;--bs-table-color:var(--cream);--bs-table-border-color:rgba(201,162,39,.4);--bs-table-hover-bg:rgba(240,168,48,.12);--bs-table-hover-color:#fff}
+.table-earth th{color:var(--amber);font-family:"Shippori Mincho",serif}
+.credit{background:#fff;border-left:4px solid var(--gold);border-radius:.25rem .5rem .5rem .25rem;padding:.5rem 1rem}
+.credit small{color:var(--red);text-transform:uppercase;letter-spacing:.1em;font-weight:800}
+.btn-day{background:transparent;color:var(--cream);border:1px solid var(--gold);margin:0 .4rem .6rem 0}
+.btn-day.active,.btn-day:hover{background:var(--gold);color:var(--brown)}
+.time{border:0;border-radius:.4rem;background:var(--green);color:var(--cream);padding:.2rem .65rem;margin:.15rem;font-weight:600;transition:.2s}
+.time:hover,.time.picked{background:var(--red)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--brown);color:#fff;border:1px solid var(--gold);padding:.6rem 1.2rem;border-radius:.5rem;transition:.35s;z-index:60}
+#toast.show{transform:translate(-50%,0)}
+#top{position:fixed;right:18px;bottom:18px;width:44px;height:44px;border:0;border-radius:50%;background:var(--gold);color:var(--brown);opacity:0;pointer-events:none;transition:.3s;z-index:50}
+#top.show{opacity:1;pointer-events:auto}
+
+/* ===== footer ===== */
+footer{background:linear-gradient(180deg,#3d1a14,#22130b);color:var(--cream);border-top:3px solid var(--gold);padding-top:3rem!important}
+footer a{color:var(--cream);text-decoration:none}footer a:hover{color:var(--amber)}
+footer h6{color:var(--gold);font:700 1.1rem "Shippori Mincho",serif}
+.social a{font-size:1.3rem;margin-right:.9rem}
+
+/* ===== motion ===== */
+.js .reveal{opacity:0}.js .reveal.in{opacity:1;animation:rise .6s backwards;animation-delay:var(--dl,0s)}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .reveal{opacity:1}}
