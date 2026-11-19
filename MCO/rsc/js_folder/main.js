@@ -1,211 +1,288 @@
 
 (() => {
-  // Shortcuts for selecting HTML elements
+
+  // =========================
+  // Helper Functions
+  // =========================
+
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
-  const KEY = "spiritedaway.cart";
 
-  // Format prices in Philippine pesos
-  const peso = n => "₱" + n.toLocaleString("en-PH", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
+  // =========================
+  // Header Shadow + Back-to-Top Button
+  // =========================
+
+  const nav = $(".site-nav");
+  const top = $("#top");
+
+  addEventListener("scroll", () => {
+
+    // Add shadow to navbar when scrolling
+    nav && nav.classList.toggle("scrolled", scrollY > 20);
+
+    // Show back-to-top button after scrolling down
+    top && top.classList.toggle("show", scrollY > 600);
+
+  }, { passive: true });
+
+
+  // Scroll back to the top when button is clicked
+  top && top.addEventListener("click", () => {
+    scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   });
 
-  // Load the saved cart from localStorage
-  let cart = [];
 
-  try {
-    cart = JSON.parse(localStorage.getItem(KEY)) || [];
-  } catch {
-    cart = [];
-  }
+  // =========================
+  // Fade In Sections as You Scroll
+  // =========================
 
-  cart = Array.isArray(cart)
-    ? cart.filter(i => i && i.name && i.price >= 0 && i.qty > 0)
-    : [];
+  const io = new IntersectionObserver(es => {
 
-  // Save cart and calculate its contents
-  const save = () => localStorage.setItem(KEY, JSON.stringify(cart));
-  const count = () => cart.reduce((sum, i) => sum + i.qty, 0);
-  const total = () => cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+    es.forEach(e => {
 
-  // Display temporary notification messages
+      if (e.isIntersecting) {
+
+        // Reveal the element
+        e.target.classList.add("in");
+
+        // Stop observing after it becomes visible
+        io.unobserve(e.target);
+
+      }
+
+    });
+
+  }, {
+    threshold: 0.12
+  });
+
+
+  // Find all elements that need to be revealed
+  const reveal = root => {
+
+    $$(".reveal:not(.in)", root).forEach((el, i) => {
+
+      // Add a small delay between elements
+      el.style.setProperty("--dl", (i % 4) * 0.08 + "s");
+
+      // Start observing the element
+      io.observe(el);
+
+    });
+
+  };
+
+  reveal();
+
+
+  // =========================
+  // Cinema Schedule
+  // Feature Page Only
+  // =========================
+
+  // Edit the cinemas and showtimes here
+  const list = $("#cinemaList");
+  const days = $("#days");
   const toast = $("#toast");
-  let toastTimer;
 
-  function showToast(message) {
-    if (!toast) return;
+  if (list && days) {
 
-    toast.textContent = message;
-    toast.classList.add("show");
+    // Cinema Information
+    const C = [
 
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
-  }
+      {
+        n: "Vigan Plaza Cinemas",
+        h: "Cinema 2 · Japanese audio, English subs",
+        p: 280,
 
-  // Update the cart display and product quantity labels
-  function render() {
-    $("#cartCount").textContent = count();
-    $("#cartTotal").textContent = peso(total());
-    $("#panelTotal").textContent = peso(total());
-    $("#checkoutBtn").disabled = cart.length === 0;
+        t: [
+          ["10:30 AM", "1:45 PM", "5:00 PM", "8:15 PM"],
+          ["11:00 AM", "2:15 PM", "6:30 PM"],
+          ["10:00 AM", "1:15 PM", "4:30 PM", "7:45 PM"]
+        ]
+      },
 
-    // Display cart items or an empty cart message
-    $("#cartItems").innerHTML = cart.length
-      ? cart.map(i => `
-          <div class="cart-row">
-            <div class="cart-thumb">
-              <i class="bi bi-bag"></i>
-              ${i.img ? `<img src="${i.img}" alt="">` : ""}
-            </div>
+      {
+        n: "Laoag Metro Cinemas",
+        h: "Cinema 4 · English dub",
+        p: 260,
 
-            <div class="flex-grow-1">
-              <div class="fw-bold">${i.name}</div>
-              <small class="text-secondary">${peso(i.price)} each</small>
+        t: [
+          ["11:00 AM", "2:15 PM", "6:30 PM"],
+          ["12:30 PM", "3:45 PM", "7:00 PM"],
+          ["11:15 AM", "2:30 PM", "5:45 PM", "9:00 PM"]
+        ]
+      },
 
-              <div class="qty">
-                <button class="qty-btn" data-act="dec" data-name="${i.name}">−</button>
-                <b>${i.qty}</b>
-                <button class="qty-btn" data-act="inc" data-name="${i.name}">+</button>
-              </div>
-            </div>
+      {
+        n: "Ilocos Grand Cinemas",
+        h: "Cinema 1 · Japanese audio, English subs",
+        p: 300,
 
-            <div class="text-end">
-              <div class="fw-bold">${peso(i.price * i.qty)}</div>
-              <button class="icon-btn" data-act="del" data-name="${i.name}">
-                <i class="bi bi-trash"></i>
-              </button>
-            </div>
-          </div>
-        `).join("")
-      : `
-          <div class="empty-cart">
-            <i class="bi bi-cart-x"></i>
-            <p>Your cart is empty.<br>Add something from Yubaba’s shop!</p>
-          </div>
-        `;
-
-    // Show how many of each product are in the cart
-    $$(".product-item").forEach(el => {
-      const item = cart.find(i => i.name === el.dataset.name);
-      let tag = $(".cart-qty", el);
-
-      if (item) {
-        if (!tag) {
-          tag = document.createElement("span");
-          tag.className = "cart-qty";
-          $(".product-img", el).append(tag);
-        }
-
-        tag.textContent = `In cart ×${item.qty}`;
-      } else {
-        tag?.remove();
+        t: [
+          ["12:00 PM", "3:30 PM", "7:00 PM"],
+          ["1:00 PM", "4:15 PM", "7:30 PM"],
+          ["12:15 PM", "3:00 PM", "6:15 PM"]
+        ]
       }
-    });
-  }
 
-  // Add products to the cart
-  $$(".add-cart").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const name = btn.dataset.name;
-      const price = parseFloat(btn.dataset.price);
-      const img = $(".product-img img", btn.closest(".product-item"));
-      const item = cart.find(i => i.name === name);
+    ];
 
-      if (item) {
-        item.qty++;
-      } else {
-        cart.push({
-          name,
-          price,
-          qty: 1,
-          img: img?.getAttribute("src") || ""
+
+    // Selected day and toast timer
+    let d = 0;
+    let timer;
+
+
+    // Generate the day label
+    const label = i => {
+
+      if (i === 0) {
+        return "Today";
+      }
+
+      return new Date(Date.now() + i * 864e5)
+        .toLocaleDateString("en", {
+          weekday: "short",
+          month: "short",
+          day: "numeric"
         });
+
+    };
+
+
+    // =========================
+    // Display Cinema Schedule
+    // =========================
+
+    const draw = () => {
+
+      // Generate day selection buttons
+      days.innerHTML = [0, 1, 2].map(i => `
+
+        <button class="btn btn-day ${i === d ? "active" : ""}"
+                data-d="${i}">
+
+          ${label(i)}
+
+        </button>
+
+      `).join("");
+
+
+      // Generate cinema cards and showtimes
+      list.innerHTML = C.map(c => `
+
+        <div class="col-md-6 col-lg-4">
+
+          <div class="card h-100 p-3 reveal">
+
+            <h5>
+              <i class="bi bi-geo-alt-fill text-danger"></i>
+              ${c.n}
+            </h5>
+
+            <p class="mb-1 small text-secondary">
+              ${c.h}
+            </p>
+
+            <div>
+
+              ${c.t[d].map(t => `
+
+                <button class="time" data-c="${c.n}">
+                  ${t}
+                </button>
+
+              `).join("")}
+
+            </div>
+
+            <p class="mt-2 mb-0 fw-bold">
+              ₱${c.p}
+            </p>
+
+          </div>
+
+        </div>
+
+      `).join("");
+
+
+      // Apply reveal animation to newly generated cards
+      reveal(list);
+
+    };
+
+
+    // =========================
+    // Day Selection
+    // =========================
+
+    days.addEventListener("click", e => {
+
+      const b = e.target.closest("[data-d]");
+
+      if (b) {
+
+        // Update selected day
+        d = +b.dataset.d;
+
+        // Refresh cinema schedule
+        draw();
+
       }
 
-      save();
-      render();
-
-      // Temporarily change the button after adding
-      const original = btn.innerHTML;
-      btn.innerHTML = '<i class="bi bi-check-circle"></i> Added!';
-      btn.disabled = true;
-
-      setTimeout(() => {
-        btn.innerHTML = original;
-        btn.disabled = false;
-      }, 700);
-
-      showToast(`${name} added to cart!`);
     });
-  });
 
-  // Handle quantity changes and item removal
-  $("#cartItems").addEventListener("click", e => {
-    const btn = e.target.closest("[data-act]");
-    if (!btn) return;
 
-    const item = cart.find(i => i.name === btn.dataset.name);
-    if (!item) return;
+    // =========================
+    // Showtime Selection
+    // =========================
 
-    if (btn.dataset.act === "inc") item.qty++;
-    if (btn.dataset.act === "dec") item.qty--;
-    if (btn.dataset.act === "del" || item.qty <= 0) {
-      cart = cart.filter(i => i !== item);
-    }
+    list.addEventListener("click", e => {
 
-    save();
-    render();
-  });
+      const b = e.target.closest(".time");
 
-  // Remove all items from the cart
-  $$(".js-clear").forEach(btn => {
-    btn.addEventListener("click", () => {
-      if (!cart.length) {
-        showToast("Your cart is already empty");
+      if (!b) {
         return;
       }
 
-      cart = [];
-      save();
-      render();
-      showToast("Cart cleared!");
+
+      // Remove previous selected showtime
+      $$(".time.picked").forEach(x => {
+        x.classList.remove("picked");
+      });
+
+
+      // Highlight selected showtime
+      b.classList.add("picked");
+
+
+      // Display selected showtime in toast
+      toast.textContent =
+        `${b.textContent} at ${b.dataset.c}, ${label(d)}`;
+
+      toast.classList.add("show");
+
+
+      // Reset toast timer
+      clearTimeout(timer);
+
+      timer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2500);
+
     });
-  });
 
-  // Demo checkout (does not process real payments)
-  const panel = $("#cartPanel");
 
-  $("#checkoutBtn").addEventListener("click", () => {
-    if (!cart.length) return;
+    // Initial cinema schedule
+    draw();
 
-    // Display a simple order confirmation
-    $("#orderInfo").innerHTML = `
-      Order <b>SA-${Date.now().toString().slice(-6)}</b><br>
-      ${count()} item(s) · <b>${peso(total())}</b>
-    `;
+  }
 
-    $("#cartView").classList.add("d-none");
-    $("#orderView").classList.remove("d-none");
-
-    cart = [];
-    save();
-    render();
-  });
-
-  // Close the cart panel when shopping again
-  $("#shopAgainBtn").addEventListener("click", () => {
-    bootstrap.Offcanvas.getOrCreateInstance(panel).hide();
-  });
-
-  // Show the cart instead of the previous order confirmation
-  // whenever the cart panel is opened
-  panel.addEventListener("show.bs.offcanvas", () => {
-    $("#orderView").classList.add("d-none");
-    $("#cartView").classList.remove("d-none");
-  });
-
-  // Display the saved cart when the page loads
-  render();
 })();
