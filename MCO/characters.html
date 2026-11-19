@@ -3,53 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Spirited Away Characters</title>
-
-  <link rel="stylesheet" href="rsc/css_folder/character_style.css">
+  <title>Spirited Away – Characters</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+  <!-- Main CSS (shared by all pages) -->
+  <link href="rsc/css_folder/sytle.css" rel="stylesheet">
+  <!-- Characters page CSS -->
+  <link href="rsc/css_folder/character_style.css" rel="stylesheet">
+  <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 
-  <header>
+<!-- ===== HEADER (same on every page) ===== -->
+<nav class="navbar navbar-expand-md sticky-top site-nav">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html"><span class="logo">千</span><span class="brand-title">Spirited Away</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-label="Toggle menu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html#cinema">Cinema</a></li>
+        <li class="nav-item"><a class="nav-link active" href="characters.html">Characters</a></li>
+        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO (page title + links to the sections below) ===== -->
+<header class="hero hero-sm">
+  <div class="container">
+    <p class="jp mb-1">登場人物</p>
     <h1>Spirited Away: Characters</h1>
-    <nav>
+    <p class="lead">Meet the heroes and villains of the spirit world.</p>
+    <nav class="char-links" aria-label="On this page">
       <a href="#protagonists">Protagonists</a>
       <a href="#antagonists">Antagonists</a>
       <a href="#voice-actors">Voice Actors</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main>
+<main>
 
-    <!-- Protagonists -->
-    <section id="protagonists">
-      <h2>Protagonists</h2>
-      <p class="intro">The heroes of the story are the characters who help Chihiro survive in the spirit world.</p>
+  <!-- ===== PROTAGONISTS ===== -->
+  <section id="protagonists" class="char-sec">
+    <div class="char-inner">
+      <h2 class="reveal">Protagonists</h2>
+      <p class="intro reveal">The heroes of the story are the characters who help Chihiro survive in the spirit world.</p>
 
-      <article class="card">
+      <article class="char-card reveal">
+        <!-- PICTURE: img/Chichiro.webp (file names are case-sensitive on Vercel) -->
         <img src="img/Chichiro.webp" alt="Chihiro">
         <div>
           <h3>Chihiro Ogino</h3>
           <p>The ten-year-old human girl and the story’s main heroine.
              She starts off frightened, sulky, and reluctant, but when
              trapped in the spirit world, she grows into a brave, kind,
-             and resourceful young person. Renamed "Sen" by Yubaba, she
+             and resourceful young person. Renamed “Sen” by Yubaba, she
              works at the bathhouse to save her parents and discovers her
              own inner strength while keeping her kindness and integrity intact.</p>
         </div>
       </article>
 
-      <article class="card">
+      <article class="char-card reveal">
+        <!-- PICTURE: img/Haku.jpg -->
         <img src="img/Haku.jpg" alt="Haku">
         <div>
           <h3>Haku</h3>
-          <p>Haku is a mysterious boy who works as Yubaba's apprentice and can turn into a white dragon.
-             He is the first to show Chihiro kindness and helps her find work at the bathhouse. He has 
-             forgotten his real name, which keeps him under Yubaba's control. Chihiro remembers that he
+          <p>Haku is a mysterious boy who works as Yubaba’s apprentice and can turn into a white dragon.
+             He is the first to show Chihiro kindness and helps her find work at the bathhouse. He has
+             forgotten his real name, which keeps him under Yubaba’s control. Chihiro remembers that he
              is the spirit of the Kohaku River, and this frees him.</p>
         </div>
       </article>
 
-      <article class="card">
+      <article class="char-card reveal">
+        <!-- PICTURE: img/Kamaji.jpg -->
         <img src="img/Kamaji.jpg" alt="Kamaji">
         <div>
           <h3>Kamaji</h3>
@@ -59,23 +89,27 @@
              that kindness can be found even in a harsh place.</p>
         </div>
       </article>
-    </section>
+    </div>
+  </section>
 
-    <!-- Antagonists -->
-    <section id="antagonists" class="dark">
-      <h2>Antagonists</h2>
-      <p class="intro">The antagonists challenge Chihiro, but each of them is more than just a villain.</p>
+  <!-- ===== ANTAGONISTS ===== -->
+  <section id="antagonists" class="char-sec dark">
+    <div class="char-inner">
+      <h2 class="reveal">Antagonists</h2>
+      <p class="intro reveal">The antagonists challenge Chihiro, but each of them is more than just a villain.</p>
 
-      <article class="card">
+      <article class="char-card reveal">
+        <!-- PICTURE: img/Yububa.jpg -->
         <img src="img/Yububa.jpg" alt="Yubaba">
         <div>
           <h3>Yubaba</h3>
           <p>Yubaba is a greedy witch who owns the bathhouse and controls her workers by taking their names. She forces
-             Chihiro to sign a contract and renames her "Sen." Despite her cruelty, she dearly loves her giant baby, Boh.</p>
+             Chihiro to sign a contract and renames her “Sen.” Despite her cruelty, she dearly loves her giant baby, Boh.</p>
         </div>
       </article>
 
-      <article class="card">
+      <article class="char-card reveal">
+        <!-- PICTURE: img/no face.jpg (a space in a file name can cause trouble, so renaming it to no-face.jpg is safer) -->
         <img src="img/no face.jpg" alt="No-Face">
         <div>
           <h3>No-Face</h3>
@@ -84,26 +118,59 @@
              Chihiro calms him, showing that he only wanted a friend.</p>
         </div>
       </article>
-    </section>
+    </div>
+  </section>
 
-    <!-- Voice Actors -->
-    <section id="voice-actors">
-      <h2>Voice Actors</h2>
-      <table>
-        <tr><th>Character</th><th>Japanese Voice</th><th>English Voice</th></tr>
-        <tr><td>Chihiro</td><td>Rumi Hiiragi</td><td>Daveigh Chase</td></tr>
-        <tr><td>Haku</td><td>Miyu Irino</td><td>Jason Marsden</td></tr>
-        <tr><td>Kamaji</td><td>Bunta Sugawara</td><td>David Ogden Stiers</td></tr>
-        <tr><td>Yubaba</td><td>Mari Natsuki</td><td>Suzanne Pleshette</td></tr>
-        <tr><td>No-Face</td><td>Akio Nakamura</td><td>Bob Bergen</td></tr>
-      </table>
-    </section>
+  <!-- ===== VOICE ACTORS ===== -->
+  <section id="voice-actors" class="char-sec">
+    <div class="char-inner">
+      <h2 class="reveal">Voice Actors</h2>
+      <div class="table-responsive reveal">
+        <table class="char-table">
+          <tr><th>Character</th><th>Japanese Voice</th><th>English Voice</th></tr>
+          <tr><td>Chihiro</td><td>Rumi Hiiragi</td><td>Daveigh Chase</td></tr>
+          <tr><td>Haku</td><td>Miyu Irino</td><td>Jason Marsden</td></tr>
+          <tr><td>Kamaji</td><td>Bunta Sugawara</td><td>David Ogden Stiers</td></tr>
+          <tr><td>Yubaba</td><td>Mari Natsuki</td><td>Suzanne Pleshette</td></tr>
+          <tr><td>No-Face</td><td>Akio Nakamura</td><td>Bob Bergen</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
 
-  </main>
+</main>
 
-  <footer>
-    <p>Spirited Away is a film by Hayao Miyazaki and Studio Ghibli.</p>
-  </footer>
+<!-- ===== FOOTER ===== -->
+<footer class="pb-3">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <a href="index.html" class="d-flex align-items-center gap-2 mb-3"><span class="logo">千</span><span class="brand-title fs-5 text-warning">Spirited Away</span></a>
+        <div class="social">
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a><a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a><a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a><a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-md-4"><h6>Developed by</h6>
+        <ul class="list-unstyled mb-0">
+          <li>Michael james D. Tudayan</li>
+          <li>John Vergel Baclayen</li>
+          <li>John Ryan Herrera</li>
+          <li>Airon Alconcel</li>
+          <li>Laparejo</li>
+        </ul></div>
+      <div class="col-md-4"><h6>Menu</h6><ul class="list-unstyled mb-0"><li>
+        <a href="index.html">Feature Page</a></li>
+        <li><a href="index.html#cinema">Cinema</a></li>
+        <li><a href="characters.html">Characters</a></li>
+        <li><a href="products.html">Products</a></li></ul></div>
+    </div>
+    <hr style="border-color:var(--gold)">
+    <p class="text-center small mb-0 opacity-75">Fan-made school project. Spirited Away and all related names and images belong to Studio Ghibli and Hayao Miyazaki.</p>
+  </div>
+</footer>
 
+<button id="top" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="rsc/js_folder/main.js"></script>
 </body>
 </html>

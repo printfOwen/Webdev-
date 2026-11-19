@@ -40,9 +40,7 @@
         <p class="lead">Take a piece of the bathhouse home with you. Official-inspired merch from Yubaba’s shop.</p>
         <div class="d-flex flex-wrap gap-2"><span class="badge-pill">Plushies</span><span class="badge-pill">Figures</span><span class="badge-pill">Accessories</span></div>
       </div>
-      <div class="col-md-5">
-        <!-- PICTURE: save a merch photo as images/products-hero.jpg -->
-        <div class="ph poster" data-label="Add images/products-hero.jpg"><img src="images/products-hero.jpg" alt="Spirited Away merchandise" onerror="this.remove()"></div>
+
       </div>
     </div>
   </div>
@@ -66,28 +64,9 @@
       <p class="eyebrow reveal">Yubaba’s Shop</p>
       <h2 class="reveal">Shop All Products</h2>
 
-      <!-- Search + sort (handled by rsc/js_folder/product.js) -->
-      <div class="d-flex flex-wrap gap-3 mb-3">
-        <div class="search-box">
-          <i class="bi bi-search"></i>
-          <input type="text" id="searchInput" placeholder="Search products… ex: No-Face, Haku, keychain" aria-label="Search products">
-        </div>
-        <select id="sortSelect" class="sort-select" aria-label="Sort products">
-          <option value="featured">Sort: Featured</option>
-          <option value="low">Price: Low to High</option>
-          <option value="high">Price: High to Low</option>
-          <option value="az">Name: A to Z</option>
-        </select>
-      </div>
 
-      <!-- Category filter -->
-      <div class="d-flex flex-wrap gap-2 mb-2">
-        <button class="btn filter-btn active" data-filter="all">All</button>
-        <button class="btn filter-btn" data-filter="plush">Plushies</button>
-        <button class="btn filter-btn" data-filter="figure">Figures</button>
-        <button class="btn filter-btn" data-filter="accessory">Accessories</button>
-      </div>
-      <p id="resultCount" class="small mb-3"></p>
+
+
       <p id="noResult" class="text-center d-none">No products found. Try another search.</p>
 
       <!-- 12 products, 4 per row on large screens (4 x 3 grid) -->
@@ -167,7 +146,7 @@
         <div class="col-12 col-sm-6 col-lg-3 product-item" data-category="figure" data-name="Sea Train Diorama">
           <div class="product-card">
             <!-- PICTURE: save your photo as images/product-train.jpg (or change the src below) -->
-            <div class="product-img" data-label="Add images/product-train.jpg"><img src="images/product-train.jpg" alt="Sea Train Diorama" onerror="this.parentElement.classList.add('no-img');this.remove()"><span class="product-badge">Limited</span></div>
+            <div class="product-img" data-label="Add images/product-train.jpg"><img src="img/TrainFigurien.jpg" alt="Sea Train Diorama" onerror="this.parentElement.classList.add('no-img');this.remove()"><span class="product-badge">Limited</span></div>
             <div class="product-info">
               <span class="product-category">Figure</span>
               <h5>Sea Train Diorama</h5>
@@ -181,7 +160,7 @@
         <div class="col-12 col-sm-6 col-lg-3 product-item" data-category="figure" data-name="Yubaba Statue">
           <div class="product-card">
             <!-- PICTURE: save your photo as images/product-yubaba.jpg (or change the src below) -->
-            <div class="product-img" data-label="Add images/product-yubaba.jpg"><img src="images/product-yubaba.jpg" alt="Yubaba Statue" onerror="this.parentElement.classList.add('no-img');this.remove()"></div>
+            <div class="product-img" data-label="Add images/product-yubaba.jpg"><img src="img/YubabaStatue.jpg" alt="Yubaba Statue" onerror="this.parentElement.classList.add('no-img');this.remove()"></div>
             <div class="product-info">
               <span class="product-category">Figure</span>
               <h5>Yubaba Statue</h5>
@@ -195,7 +174,7 @@
         <div class="col-12 col-sm-6 col-lg-3 product-item" data-category="plush" data-name="Kamaji Plush">
           <div class="product-card">
             <!-- PICTURE: save your photo as images/product-kamaji.jpg (or change the src below) -->
-            <div class="product-img" data-label="Add images/product-kamaji.jpg"><img src="images/product-kamaji.jpg" alt="Kamaji Plush" onerror="this.parentElement.classList.add('no-img');this.remove()"></div>
+            <div class="product-img" data-label="Add images/product-kamaji.jpg"><img src="img/Kamaji.jpg" alt="Kamaji Plush" onerror="this.parentElement.classList.add('no-img');this.remove()"></div>
             <div class="product-info">
               <span class="product-category">Plushie</span>
               <h5>Kamaji Plush</h5>
@@ -209,7 +188,7 @@
         <div class="col-12 col-sm-6 col-lg-3 product-item" data-category="plush" data-name="Radish Spirit Plush">
           <div class="product-card">
             <!-- PICTURE: save your photo as images/product-radish.jpg (or change the src below) -->
-            <div class="product-img" data-label="Add images/product-radish.jpg"><img src="images/product-radish.jpg" alt="Radish Spirit Plush" onerror="this.parentElement.classList.add('no-img');this.remove()"><span class="product-badge">New</span></div>
+            <div class="product-img" data-label="Add images/product-radish.jpg"><img src="img/Radish.jpg" alt="Radish Spirit Plush" onerror="this.parentElement.classList.add('no-img');this.remove()"><span class="product-badge">New</span></div>
             <div class="product-info">
               <span class="product-category">Plushie</span>
               <h5>Radish Spirit Plush</h5>
@@ -223,7 +202,7 @@
         <div class="col-12 col-sm-6 col-lg-3 product-item" data-category="figure" data-name="Bathhouse Lantern Night Light">
           <div class="product-card">
             <!-- PICTURE: save your photo as images/product-lantern.jpg (or change the src below) -->
-            <div class="product-img" data-label="Add images/product-lantern.jpg"><img src="images/product-lantern.jpg" alt="Bathhouse Lantern Night Light" onerror="this.parentElement.classList.add('no-img');this.remove()"></div>
+            <div class="product-img" data-label="Add images/product-lantern.jpg"><img src="img/light.jpg" alt="Bathhouse Lantern Night Light" onerror="this.parentElement.classList.add('no-img');this.remove()"></div>
             <div class="product-info">
               <span class="product-category">Figure</span>
               <h5>Bathhouse Lantern Night Light</h5>
@@ -237,7 +216,7 @@
         <div class="col-12 col-sm-6 col-lg-3 product-item" data-category="accessory" data-name="Zeniba’s Hair Band">
           <div class="product-card">
             <!-- PICTURE: save your photo as images/product-hairband.jpg (or change the src below) -->
-            <div class="product-img" data-label="Add images/product-hairband.jpg"><img src="images/product-hairband.jpg" alt="Zeniba’s Hair Band" onerror="this.parentElement.classList.add('no-img');this.remove()"></div>
+            <div class="product-img" data-label="Add images/product-hairband.jpg"><img src="img/Headband.jpg" alt="Zeniba’s Hair Band" onerror="this.parentElement.classList.add('no-img');this.remove()"></div>
             <div class="product-info">
               <span class="product-category">Accessory</span>
               <h5>Zeniba’s Hair Band</h5>
@@ -251,7 +230,7 @@
         <div class="col-12 col-sm-6 col-lg-3 product-item" data-category="accessory" data-name="Enamel Pin Set">
           <div class="product-card">
             <!-- PICTURE: save your photo as images/product-pins.jpg (or change the src below) -->
-            <div class="product-img" data-label="Add images/product-pins.jpg"><img src="images/product-pins.jpg" alt="Enamel Pin Set" onerror="this.parentElement.classList.add('no-img');this.remove()"></div>
+            <div class="product-img" data-label="Add images/product-pins.jpg"><img src="img/pinset.jpg" alt="Enamel Pin Set" onerror="this.parentElement.classList.add('no-img');this.remove()"></div>
             <div class="product-info">
               <span class="product-category">Accessory</span>
               <h5>Enamel Pin Set</h5>
@@ -292,17 +271,27 @@
   </div>
 </div>
 
-<!-- ===== FOOTER (same on every page) ===== -->
+<!-- ===== FOOTER ===== -->
 <footer class="pb-3">
   <div class="container">
     <div class="row g-4">
       <div class="col-md-4">
         <a href="index.html" class="d-flex align-items-center gap-2 mb-3"><span class="logo">千</span><span class="brand-title fs-5 text-warning">Spirited Away</span></a>
         <div class="social">
-          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a><a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a><a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a><a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
         </div>
       </div>
-      <div class="col-md-4"><h6>Developed by</h6><ul class="list-unstyled mb-0"><li>Your Name (Leader)</li><li>Member 2</li><li>Member 3</li><li>Member 4</li></ul></div>
+      <div class="col-md-4"><h6>Developed by</h6>
+        <ul class="list-unstyled mb-0">
+          <li>Michael james D. Tudayan</li>
+          <li>John Vergel Baclayen</li>
+          <li>John Ryan Herrera</li>
+          <li>Airon Alconcel</li>
+          <li>Laparejo</li>
+        </ul></div>
       <div class="col-md-4"><h6>Menu</h6><ul class="list-unstyled mb-0"><li><a href="index.html">Feature Page</a></li><li><a href="index.html#cinema">Cinema</a></li><li><a href="characters.html">Characters</a></li><li><a href="products.html">Products</a></li></ul></div>
     </div>
     <hr style="border-color:var(--gold)">
