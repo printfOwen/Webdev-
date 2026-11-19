@@ -1,0 +1,119 @@
+/* Basics */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  line-height: 1.6;
+  color: #3a3a3a;          /* Soft dark gray for text */
+  background: #f0ebe6;     /* Light cream off-white background */
+}
+
+/* Header and footer */
+header, footer {
+  background: #40514e;     /* Deep greenish-gray, earthy tone */
+  color: #f0d9b5;          /* Light creamy yellow */
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+header h1 {
+  margin: 0 0 0.5rem;
+  color: #b47734;          /* Warm caramel color */
+}
+
+nav a {
+  color: #f0d9b5;
+  margin: 0 0.75rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Sections */
+section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-top: 0;
+  color: #4e6252;          /* Muted olive green */
+}
+
+.intro {
+  margin-bottom: 2rem;
+}
+
+/* Dark antagonist section */
+.dark {
+  max-width: none;
+  background: #40514e;     /* Matches header/footer dark green */
+  color: #f0d9b5;
+}
+
+.dark .card {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dark h2, .dark .intro {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Character cards: image on the left, text on the right */
+.card {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.card img {
+  width: 220px;
+  height: 280px;
+  object-fit: cover;
+  background: #6b8e75;     /* Soft mossy green */
+  border-radius: 6px;
+}
+
+.card h3 {
+  margin: 0 0 0.5rem;
+  color: #975c2a;          /* Rustic brownish-orange */
+}
+
+.dark .card h3 {
+  color: #f0d9b5;
+}
+
+/* Voice actors table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f6f2ef;     /* Very light warm background */
+}
+
+th, td {
+  padding: 0.75rem;
+  border: 1px solid #a2a49f; /* Muted gray-green border */
+  text-align: left;
+}
+
+th {
+  background: #40514e;
+  color: #f0d9b5;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
